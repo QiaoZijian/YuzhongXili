@@ -6,7 +6,9 @@ var router = express.Router();
 router.get('/record', serveModel.getRecordPage);
 router.get('/query', serveModel.getQueryPage);
 router.get('/look', serveModel.haveALook);
+router.get('/queryBills', serveModel.queryBills);
 
 /* POST */
 router.post('/submitBill', serveModel.submitBill);
+
 module.exports = router;

@@ -10,7 +10,7 @@ exports.getQueryPage = function(req, res){
 };
 
 exports.haveALook = function (req, res) {
-    Bill.find({},'who when cost whoShare', function (err, bills) {
+    Bill.find({}, function (err, bills) {
         if(err){
             console.log("find class error")
         }else{
@@ -19,6 +19,22 @@ exports.haveALook = function (req, res) {
     });
 };
 
+exports.queryBills = function (req, res) {
+    var who = req.query.who;
+    var start = req.query.start;
+    var end = req.query.end;
+    Bill.
+        find({who: who}).
+        where('when').gt(start).lt(end).
+        sort('when').
+        exec(function (err, bills) {
+            if(err){
+                console.log("find class error")
+            }else{
+                res.send(bills);
+            }
+        });
+};
 exports.submitBill = function(req, res){
 //    console.log(req.body);
     var oneBill = new Bill({

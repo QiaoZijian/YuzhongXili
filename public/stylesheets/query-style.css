@@ -1,0 +1,48 @@
+a.back{
+    position: absolute;
+    top: 10px;
+}
+div.form-group label{
+    padding-right: 10px;
+}
+div.form-group select{
+    width: 100px;
+}
+div.center-div{
+    text-align: center;
+}
+div.resultHeading{
+    padding: 0px 12px;
+    margin-bottom: 8px;
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    border-radius: 4px;
+}
+div.resultHeading.active{
+    border-radius: 4px 4px 0px 0px;
+    margin-bottom: 0px;
+}
+div.resultMore{
+    display: none;
+    padding: 9px 14px;
+    margin-top: -1px;
+    margin-bottom: 8px;
+    background-color: #ffffff;
+    border: 1px solid #e1e1e8;
+    border-radius: 0px 0px 4px 4px;
+}
+.media-object{
+    width: 100px;
+}
+h2.down{
+    margin-top: -15px;
+}
+div.media-body p{
+    color: gray;
+}
+div.resultMore ul li{
+    margin-bottom: 8px;
+}
+div.btn-group button.btn{
+    padding: 3px 15px;
+}

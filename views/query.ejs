@@ -1,0 +1,60 @@
+<html>
+<head lang="zh-CN">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" type="image/png" href="images/cover.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>查查账吧！</title>
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/query-style.css">
+</head>
+<body>
+    <div class="container">
+        <a class="back pull-left" href="/record">返回</a>
+        <h3 class="text-center">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            Query.
+        </h3>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="queryWho" class="col-xs-2 control-label">债主</label>
+                <div class="col-xs-10">
+                    <select class="form-control" id="queryWho">
+                        <option value="0" selected="selected">刘娟</option>
+                        <option value="1">林洁</option>
+                        <option value="2">林欢</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="startTime" class="col-xs-2 control-label">始于</label>
+                <div class="col-xs-10">
+                    <input type="date" class="form-control" id="startTime">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="endTime" class="col-xs-2 control-label">止于</label>
+                <div class="col-xs-10">
+                    <input type="date" class="form-control" id="endTime">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="center-div">
+                    <button type="button" id="queryButton" class="btn btn-lg btn-primary">
+                        <span class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></span> 查账！
+                    </button>
+                </div>
+            </div>
+        </form>
+        <hr/>
+        <div>
+            <p>Result <span class="badge" id="billsNum">0</span></p>
+            <div id="resultsDiv">
+
+            </div>
+        </div>
+    </div>
+<script src="javascripts/jquery-2.0.3.min.js"></script>
+<script src="javascripts/bootstrap.min.js"></script>
+<script src="javascripts/query-bill.js"></script>
+</body>
+</html>

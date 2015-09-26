@@ -5,9 +5,6 @@ var Bill = require('../mongoModel').Bill;
 exports.getRecordPage = function(req, res){
     res.render('record');
 };
-exports.getQueryPage = function(req, res){
-    res.render('query');
-};
 
 exports.haveALook = function (req, res) {
     Bill.find({}, function (err, bills) {
@@ -23,6 +20,7 @@ exports.queryBills = function (req, res) {
     var who = req.query.who;
     var start = req.query.start;
     var end = req.query.end;
+//    console.log(who,start,end);
     Bill.
         find({who: who}).
         where('when').gt(start).lt(end).

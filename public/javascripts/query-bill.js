@@ -2,9 +2,7 @@
  * Created by Qiao on 9/15/15.
  */
 //常值
-var NameArray=["刘娟","林洁","林欢"];
-var ShareNameArray=["洁","斌","娟","瓜","乔"];
-var TypeArray=["蔬菜水果小吃","柴米油盐酱醋茶","酒水饮料","生活用品","水电暖","娱乐","其他"];
+var ShareNameArray2=["洁","斌","娟","瓜","乔"];
 //得到这一天0:00:00:000点时的 number 表示
 var oneDayBegin = function (dateString) {
     //如果有值，那么那天的0点；如果没有，就是上线前的某个时间，是之后记录的最早的即可
@@ -12,7 +10,7 @@ var oneDayBegin = function (dateString) {
         var tmp = new Date(dateString);
         return tmp.setHours(0);
     }else{
-        return (new Date("2015-9-1")).getTime();
+        return 1441036800000; //2015-09-01 08:00 的时间戳，在上线之前
     }
 };
 //得到这一天23:59:59:999 时的 number 表示
@@ -25,20 +23,7 @@ var oneDayEnd = function (dateString) {
         return (new Date()).getTime();
     }
 };
-//bills.js里也有，但不想引用那个js
-var addZero = function (num) { //设x=num，如果x小于10，返回0x
-    if(num < 10){
-        return "0" + num;
-    }else{
-        return ""+num;
-    }
-};
-var displayTimeString= function (time){//负责展示时间， time是Date对象，返回一个字符串
-    var timeString="";
-    timeString += time.getFullYear() + "-" + addZero(time.getMonth()+1) + "-" + addZero(time.getDate()) + " ";
-    timeString += addZero(time.getHours()) + ":" + addZero(time.getMinutes()) + ":" + addZero(time.getSeconds());
-    return timeString;
-};
+
 var displayBills = function (bills) {
     var billsNum = bills.length;
     $("#billsNum").text(billsNum);
@@ -68,7 +53,7 @@ var displayBills = function (bills) {
         for(var j = 0 ; j < bills[i].whoShare.length; j++){
             if(bills[i].whoShare[j] != 0){
                 var $button = $('<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="'+
-                    bills[i].whoShare[j]/100 +'">'+ ShareNameArray[j] +'</button>');
+                    bills[i].whoShare[j]/100 +'">'+ ShareNameArray2[j] +'</button>');
                 $li_2.find("div").append($button);
             }
         }
@@ -87,6 +72,11 @@ var displayBills = function (bills) {
 };
 
 $(document).ready(function () {
+    $("#queryDiv .back").click(function () {
+        $("#recordDiv").css("display","block");
+        $("#queryDiv").css("display","none");
+        return false;
+    });
     $("#queryButton").click(function () {
         //先清空，再去查询
         $("#resultsDiv").empty();
@@ -94,24 +84,28 @@ $(document).ready(function () {
         var who = Number($("#queryWho").val());
         var start = oneDayBegin($("#startTime").val());
         var end = oneDayEnd($("#endTime").val());
-        jQuery.ajax({
-            url: "/queryBills",
-            type: "get",
-            data:{
-                who: who,
-                start: start,
-                end: end
-            },
-            success: function (bills) {
-                //展示出来查到的这些bills
-                displayBills(bills);
-                //展示完毕还需要激活一下tooltip
-                $('[data-toggle="tooltip"]').tooltip();
-            },
-            error: function () {
-                alert("出错了，请联系哈密瓜！~");
-            }
-        });
+        if(start > end){
+            alert("起止日期有误！");
+        }else{
+            jQuery.ajax({
+                url: "/queryBills",
+                type: "get",
+                data:{
+                    who: who,
+                    start: start,
+                    end: end
+                },
+                success: function (bills) {
+                    //展示出来查到的这些bills
+                    displayBills(bills);
+                    //展示完毕还需要激活一下tooltip
+                    $('[data-toggle="tooltip"]').tooltip();
+                },
+                error: function () {
+                    alert("出错了，请联系哈密瓜！~");
+                }
+            });
+        }
         return false;
     });
     $("#resultsDiv").on("click", "div.resultHeading" , function () {

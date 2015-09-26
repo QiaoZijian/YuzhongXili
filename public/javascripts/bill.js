@@ -38,6 +38,11 @@ var displayTimeString= function (time){//负责展示时间， time是Date对象
     return timeString;
 };
 $(document).ready(function () {
+    $("#queryBill").click(function () {
+        $("#recordDiv").css("display","none");
+        $("#queryDiv").css("display","block");
+        return false;
+    });
     $(".btn-round").click(function () {
         $("#fakeContainer").hide();
         $("#realContainer").show();

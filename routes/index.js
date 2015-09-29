@@ -5,6 +5,7 @@ var router = express.Router();
 /* GET  */
 router.get('/record', serveModel.getRecordPage);
 router.get('/look', serveModel.haveALook);
+router.get('/calcBills', serveModel.calcBills);
 router.get('/queryBills', serveModel.queryBills);
 
 /* POST */

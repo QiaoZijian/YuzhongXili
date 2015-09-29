@@ -1,0 +1,30 @@
+#calcDiv{
+    display: none;
+}
+#calcDiv h3{
+    margin-bottom: 20px;
+}
+#calcResult{
+    display: none;
+}
+#calcDiv .small{
+    font-size: 75%;
+}
+#calcDiv .billTime{
+    margin-top: 64px;
+    position: relative;
+}
+#stamp{
+    position: absolute;
+    width: 120px;
+    right: 0px;
+    bottom: -8px;
+}
+@media (min-width: 330px) {
+    #calcDiv .billTime{
+        margin-top: 75px;
+    }
+    #stamp{
+        width: 130px;
+    }
+}

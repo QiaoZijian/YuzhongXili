@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
         <link rel="stylesheet" href="stylesheets/record-style.css">
         <link rel="stylesheet" href="stylesheets/query-style.css">
+        <link rel="stylesheet" href="stylesheets/calc-style.css">
     </head>
     <body>
         <div id="recordDiv">
@@ -34,7 +35,7 @@
                             <a id="queryBill">个人查账入口</a>
                         </p>
                         <p class="billEnter">
-                            <a id="calBill">月初算账入口</a>
+                            <a id="calcBill">月初算账入口</a>
                         </p>
                     </div>
                     <div class="col-xs-4">
@@ -213,10 +214,66 @@
                 </div>
             </div>
         </div>
+        <div class="container" id="calcDiv">
+            <a class="back pull-left">返回</a>
+            <h3 class="text-center">
+                <span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>
+                Calculate.
+            </h3>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                </span>
+                <input type="month" class="form-control" id="calcMonth">
+                <span class="input-group-btn">
+                    <button class="btn btn-danger" type="button" id="calc">&nbsp;算账!</button>
+                </span>
+            </div>
+            <hr/>
+            <div id="calcResult">
+                <h4 class="text-center">
+                    <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span><span></span>
+                </h4>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th><small>单位：元</small></th>
+                        <th>娟</th>
+                        <th>洁</th>
+                        <th>瓜</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">支出</th>
+                        <td>100</td>
+                        <td>100</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">受益</th>
+                        <td>100</td>
+                        <td>100</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">仍需支出</th>
+                        <td>100</td>
+                        <td>100</td>
+                        <td>100</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h5 class="billTime pull-right"><span></span>
+                    <img id="stamp" src="images/stamp.png">
+                </h5>
+            </div>
+        </div>
 
     <script src="javascripts/jquery-2.0.3.min.js"></script>
     <script src="javascripts/bootstrap.min.js"></script>
     <script src="javascripts/bill.js"></script>
     <script src="javascripts/query-bill.js"></script>
+    <script src="javascripts/calc-bill.js"></script>
     </body>
 </html>

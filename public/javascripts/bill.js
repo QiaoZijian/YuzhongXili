@@ -38,9 +38,18 @@ var displayTimeString= function (time){//负责展示时间， time是Date对象
     return timeString;
 };
 $(document).ready(function () {
+    //查账
     $("#queryBill").click(function () {
         $("#recordDiv").css("display","none");
         $("#queryDiv").css("display","block");
+        $("#calcDiv").css("display","none");
+        return false;
+    });
+    //算账
+    $("#calcBill").click(function () {
+        $("#recordDiv").css("display","none");
+        $("#queryDiv").css("display","none");
+        $("#calcDiv").css("display","block");
         return false;
     });
     $(".btn-round").click(function () {

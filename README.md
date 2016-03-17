@@ -1,6 +1,7 @@
 ##A small accounting webApp##
-Node.js is the main server platform.
-It uses `Express 4.10` as the web framework.
-It uses `mongodb` as the database.
-Today, more and more people live in their rented house with some other people or their friends.
-So, how to Go Dutch for the paid shared things become to a not small problem.
+Today, more and more people live in their rented house with their friends or other people.
+So, how to *Go Dutch* easily for the shared things becomes to a real problem we are facing.
+
+And here is my solution for my roommates.
+`Node.js` is the main server platform.
+It uses `Express 4.10` as the web framework and `mongodb` as the database.

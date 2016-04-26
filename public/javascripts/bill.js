@@ -12,12 +12,10 @@ var ManRandom = function (shareArray, need, withoutWho){
     var assignArray = [0,0,0,0,0]; //大家都是0，还没随机，被随机到的之后会变成1
     for(var i = 0; i < need; i){ //i并不需要自加，满足条件再自加
         var which = Math.floor(Math.random() * shareArray.length);
-        var j = 0;
-        for(j = 0 ; j < assignArray.length ; j++){
-            if(shareArray[which] == withoutWho || assignArray[shareArray[which]] == 1)
-                break; //break的意义就是这次随机失效了
+        if(shareArray[which] == withoutWho || assignArray[shareArray[which]] == 1){
+            continue;   //随机失效，接着来
         }
-        if(j == assignArray.length){ //说明按照规则执行还未被选中过
+        else{ //说明按照规则执行还未被选中过
             assignArray[shareArray[which]] = 1;
             i++;
         }
@@ -62,7 +60,7 @@ $(document).ready(function () {
     $(".small-round").click(function () {
         //算出来每人要分多少钱
         var who = $("#formWho").data("who");
-        var costFen = $("#formCost").val() * 100;
+        var costFen = Math.round($("#formCost").val() * 100);
         var whoShare =$("#formShare").val(); //数组，有哪些人
         var eachOneFen = Math.floor(costFen / whoShare.length); //一个人分到的基本收益
         for (index in whoShare){
